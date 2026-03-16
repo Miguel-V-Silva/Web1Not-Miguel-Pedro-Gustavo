@@ -1,13 +1,15 @@
-# Bem Vindo ao TaskFlow
+# TaskFlow
 
-### Um aplicativo web intuitivo e eficiente, projetado para organizar suas tarefas e otimizar sua produtividade. Desenvolvido para uso interno, o TaskFlow oferece uma interface limpa e funcionalidades robustas para gerenciar suas listas de afazeres, projetos pessoais e demandas específicas.
+TaskFlow é um gerenciador de tarefas simples e eficiente que permite criar, editar e deletar tarefas para organizar seu dia a dia. Ideal para estudantes, profissionais ou qualquer pessoa que precise gerenciar suas atividades de forma prática.
 
-🚀 Funcionalidades Principais
-Criação e Gerenciamento de Tarefas: Adicione, edite e exclua tarefas com facilidade.
-Organização Flexível: Categorize tarefas em projetos ou listas personalizadas.
-Definição de Prazos: Atribua datas de vencimento para cada tarefa, facilitando o controle.
-Priorização Eficaz: Marque tarefas com diferentes níveis de prioridade para foco estratégico.
-Acompanhamento de Progresso: Marque tarefas como concluídas para visualizar seu avanço.
-Dashboard Intuitivo: Uma visão geral clara do status de suas tarefas.
-Autenticação de Usuário: Acesso seguro e personalizado às suas tarefas.
-Busca e Filtros Avançados: Encontre rapidamente tarefas por nome, prazo ou status.
+## Funcionalidades
+
+- **Criar tarefas**: Adicione novas tarefas com título e descrição.
+- **Editar tarefas**: Modifique o título ou a descrição de uma tarefa existente.
+- **Deletar tarefas**: Remova tarefas concluídas ou desnecessárias.
+- **Listar tarefas**: Visualize todas as tarefas cadastradas.
+
+## Tecnologias Utilizadas
+
+- Linguagem de programação: HTML, CSS e JavaScript
+- Banco de dados: Nenhum! Exatamente, não foi usado nenhum tipo de banco de dados
