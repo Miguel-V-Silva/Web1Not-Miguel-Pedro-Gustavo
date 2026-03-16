@@ -8,8 +8,3 @@ TaskFlow é um gerenciador de tarefas simples e eficiente que permite criar, edi
 - **Editar tarefas**: Modifique o título ou a descrição de uma tarefa existente.
 - **Deletar tarefas**: Remova tarefas concluídas ou desnecessárias.
 - **Listar tarefas**: Visualize todas as tarefas cadastradas.
-
-## Tecnologias Utilizadas
-
-- Linguagem de programação: HTML, CSS e JavaScript
-- Banco de dados: Nenhum! Exatamente, não foi usado nenhum tipo de banco de dados
