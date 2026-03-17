@@ -14,9 +14,26 @@ main{
     height: 100vh;
 }
 
+.image_text { 
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #ffffff;
+    font-weight: bold;
+    z-index: 1;
+}
+
+#img-main::after{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+}
 
 #img-main{
     width: 65%;
+    position: relative;
 }
 
 #img-main img{
@@ -25,6 +42,16 @@ main{
     object-fit: cover;
 }
 
+.project-description {
+    font-size: 25px;
+    width: 100%;
+}
+
+.project-title {
+    margin-bottom: 30px;
+    font-size: 50px;
+    color: #FF7B00;
+}
 
 #login {
     width: 35%;
@@ -83,4 +110,22 @@ main{
 
 #button-form button:hover{
     background-color: #FF7B00;
+}
+
+#links-tab {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#remember-me-checkbox {
+    margin-bottom: 10px;
+}
+
+.checkbox-and-links {
+    font-size: 15px;
+}
+
+a {
+    color: #FF7B00;
 }
