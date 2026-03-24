@@ -8,18 +8,6 @@
     <title>Login TaskFlow</title>
 </head>
 
-<script>
-    function verificarLogin(){
-        var login = document.getElementById('input-id').value;
-        var senha = document.getElementById('input-password').value;
-
-        if (login == "" || login == undefined || senha == "" || senha == undefined) {
-            alert("O login e senha devem ser preenchidos.")
-        } else if (!login.includes("@") || !login.includes("."))
-            alert("Login incorreto, deve seguir o modelo: example@example.com")
-        }
-</script>
-
 <body>
     <main>
         <div id="img-main">
@@ -41,7 +29,7 @@
                     <input type="password" name="user-password" id="input-password" placeholder="Senha">
                 </div>
                 <div id="remember-me-checkbox" class="checkbox-and-links">
-                    <input type="checkbox" name="" id="">
+                    <input type="checkbox" name="" id="remember">
                     <label for="">Lembrar-me</label>
                 </div>
                 <div id="button-form">
@@ -58,6 +46,7 @@
             </div>
         </div>
     </main>
+    <script src="login.js"></script>
 </body>
 
 </html>
