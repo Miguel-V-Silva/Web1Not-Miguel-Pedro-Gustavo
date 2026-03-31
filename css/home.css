@@ -1,5 +1,6 @@
 @import url("variables.css");
 @import url("forms.css");
+@import url("table.css");
 
 body {
     font-family: 'Open Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
