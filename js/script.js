@@ -131,6 +131,7 @@ function iniciarJS(){
         }
     }
 
+    //função para limpar o formulario onde reseta todos os campos
     function limparFormulario() {
         tituloTarefaInput.value = '';
         descricaoTarefaInput.value = '';
