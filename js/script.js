@@ -120,6 +120,7 @@ function iniciarJS(){
         mostrarSessao('forms');
         tituloTarefaInput.focus();
     }
+        //função para deletar tarefa
         function deletarTarefa(linha) {
         if (confirm('Deseja excluir esta tarefa?')) {
             linha.remove();
