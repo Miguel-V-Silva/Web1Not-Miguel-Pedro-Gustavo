@@ -65,7 +65,7 @@ select:focus {
     align-items: center;
 }
 
-#add-task-btn {
+.btn-forms {
     background-color: var(--primary-orange);
     color: var(--white);
     border: none;
@@ -78,6 +78,6 @@ select:focus {
     transition: background-color 0.3s ease;
 }
 
-#add-task-btn:hover {
+.btn-forms:hover {
     background-color: var(--dark-orange);
 }

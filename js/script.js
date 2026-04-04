@@ -2,6 +2,7 @@ function iniciarJS(){
         
     //Criando as constantes para usar nas funcoes do JS
     const adicionarTarefaBotao = document.getElementById('add-task-btn');
+    const limpaFormulario = document.getElementById('clean-task-btn');
     const tituloTarefaInput = document.getElementById('task-title');
     const descricaoTarefaInput = document.getElementById('task-description');
     const categoriaSelecionada = document.getElementById('category');
@@ -10,6 +11,7 @@ function iniciarJS(){
 
     const navListar = document.getElementById('nav-listar');
     const navAdicionar = document.getElementById('nav-adicionar');
+    const navLogin = document.getElementById('nav-login')
 
     const formsSection = document.getElementById('forms-section');
     const tableSection = document.getElementById('table-section');
@@ -33,6 +35,7 @@ function iniciarJS(){
 
     navListar.addEventListener('click', () => mostrarSessao('table'));
     navAdicionar.addEventListener('click', () => mostrarSessao('forms'));
+    navLogin.addEventListener('click', () => window.location.href = '../html/login.html')
     
     //Por padrão ativa somente o forms como visiv
     mostrarSessao('forms');
@@ -99,6 +102,11 @@ function iniciarJS(){
         mostrarSessao('table')
     });
 
+    limpaFormulario.addEventListener('click', function(event){
+        event.preventDefault();
+        limparFormulario();
+    });
+
     function editarTarefa(linha) {
         linhaEditada = linha;
         adicionarTarefaBotao.textContent = 'Salvar Alterações';
@@ -129,7 +137,9 @@ function iniciarJS(){
                 adicionarTarefaBotao.textContent = 'Adicionar Tarefa';
                 editarLinha = null;
             }
+
         }
+
     }
 
     //função para limpar o formulario onde reseta todos os campos
@@ -143,7 +153,7 @@ function iniciarJS(){
 
     navAdicionar.addEventListener('click', function() {
         if (linhaEditada) {
-            linhaEditada.classList.remove('editing'); // Remove o destaque da linha
+            linhaEditada.classList.remove('editing'); 
             linhaEditada = null;
             adicionarTarefaBotao.textContent = 'Adicionar Tarefa';
             limparFormulario();
@@ -151,20 +161,22 @@ function iniciarJS(){
         mostrarSessao('forms');
     });
 
-    window.onload = function() {
-    var usuario = localStorage.getItem("login");
+    carregarUsuario();
+}
 
-    if (usuario) {
-        document.getElementById("nome-usuario").innerText = usuario;
-    } else {
-        // se não tiver login, manda de volta
-        window.location.href = "login.html";
+    function carregarUsuario() {
+        var usuario = JSON.parse(localStorage.getItem("usuario"));
+        const nomeEl = document.getElementById("nome-usuario");
+        if (usuario) {
+            if (nomeEl) {
+                nomeEl.innerText = usuario.nome;
+            }
+        } else {
+            nomeEl.innerText = "Visitante";
+        }
     }
-}
-
-}
     
-    fetch('../html/forms.html')
+fetch('../html/forms.html')
     .then(response => response.text())
     .then(data => {
         document.getElementById('forms-section').innerHTML = data;
@@ -175,14 +187,26 @@ function iniciarJS(){
                 document.getElementById('table-section').innerHTML = data;
                 
                 fetch('../html/header.html')  
-                .then(response => response.text())
-                .then(data => {
-                    document.querySelector('header').innerHTML = data;
-                    iniciarJS()
-                })
-                .catch(error => console.error('Erro ao carregar header:', error));
-            });
-        
+                    .then(response => response.text())
+                    .then(data => {
+                        document.querySelector('header').innerHTML = data;
+                        
+                        // Fetch do Footer adicionado aqui
+                        fetch('../html/footer.html')
+                            .then(response => response.text())
+                            .then(data => {
+                                document.querySelector('footer').innerHTML = data;
+                                
+                                // Inicia o JS apenas quando tudo (forms, table, header e footer) estiver carregado
+                                iniciarJS(); 
+                            })
+                            .catch(error => console.error('Erro ao carregar footer:', error));
+
+                    })
+                    .catch(error => console.error('Erro ao carregar header:', error));
+            })
+            .catch(error => console.error('Erro ao carregar table:', error));
     })
+    .catch(error => console.error('Erro ao carregar forms:', error));
 
     
