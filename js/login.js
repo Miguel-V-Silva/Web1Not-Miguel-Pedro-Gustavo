@@ -12,26 +12,37 @@
         alert("Login incorreto, deve seguir o modelo: example@example.com");
         return;
     }
+
+    var nome = login.split("@")[0];
     
+    const usuario = {
+        nome: nome,
+        email: login,
+        senha: senha
+    };
+
     // salvar se checkbox marcado
     if (lembrar) {
-        localStorage.setItem("login", login);
-        localStorage.setItem("senha", senha);
+        localStorage.setItem("usuario", JSON.stringify(usuario));
         localStorage.setItem("lembrar", "true");
     } else {
-        localStorage.removeItem("login");
-        localStorage.removeItem("senha");
+        localStorage.removeItem("usuario");
         localStorage.setItem("lembrar", "false");
     }
-    window.location.href = "../html/home.html";
+
+    window.location.href='../html/home.html'
 }
 
     window.onload = function() {
-    var lembrar = localStorage.getItem("lembrar");
+        var lembrar = localStorage.getItem("lembrar");
 
-    if (lembrar === "true") {
-        document.getElementById("input-id").value = localStorage.getItem("login");
-        document.getElementById("input-password").value = localStorage.getItem("senha");
-        document.getElementById("remember").checked = true;
+        if (lembrar === "true") {
+            var usuario = JSON.parse(localStorage.getItem("usuario"));
+
+            if (usuario) {
+                document.getElementById("input-id").value = usuario.email;
+                document.getElementById("input-password").value = usuario.senha;
+                document.getElementById("remember").checked = true;
+            }
+        }
     }
-}
