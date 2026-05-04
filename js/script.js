@@ -216,16 +216,20 @@ function iniciarJS() {
 
 //Carrega o nome de usuario da local storage para ser colocado no topo da página
 function carregarUsuario() {
-    var usuario = JSON.parse(localStorage.getItem("usuario"));
+    var usuario = sessionStorage.getItem("usuario");
     const nomeEl = document.getElementById("nome-usuario");
     if (usuario) {
         if (nomeEl) {
-            nomeEl.innerText = usuario.nome;
+            nomeEl.innerText = usuario;
         }
     } else {
         nomeEl.innerText = "Visitante";
     }
 }
+
+window.addEventListener("beforeunload", function () {
+    sessionStorage.removeItem("usuario")
+});
 
 fetch('../html/forms.html')
     .then(response => response.text())
