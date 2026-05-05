@@ -21,6 +21,7 @@
         senha: senha
     };
 
+    sessionStorage.setItem("usuario", nome);
     // salvar se checkbox marcado
     if (lembrar) {
         localStorage.setItem("usuario", JSON.stringify(usuario));
