@@ -16,18 +16,49 @@
     background-color: var(--light-orange);
     color: var(--primary-orange);
     text-align: left;
-    padding: 15px;
+    height: 56px;
+    padding: 0 32px 0 16px;
     font-size: 0.9em;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     font-weight: 700;
-    border-bottom: 2px solid var(--primary-orange); 
+    border-bottom: 2px solid var(--primary-orange);
+    vertical-align: middle;
 }
 
 #tasks-table tbody td {
-    padding: 15px;
-    border-bottom: 1px solid var(--border-color); 
+    height: 52px;
+    padding: 0 32px 0 16px;
+    border-bottom: 1px solid var(--light-orange);
     color: var(--dark-text);
+    vertical-align: middle;
+    font-size: 14px;
+}
+
+#tasks-table thead th {
+    font-weight: 505;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 180px;
+}
+
+#tasks-table tbody td {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 180px;
+}
+
+#table-container {
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid var(--light-orange);
+}
+
+#tasks-table tbody tr:hover {
+    background-color: var(--light-orange);
+    transition: background-color 0.2s ease;
 }
 
 #tasks-table tbody tr:last-child td {

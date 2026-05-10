@@ -172,10 +172,21 @@ function iniciarJS() {
         tarefas.forEach((tarefa, index) => {
             const novaLinha = tarefasTable.insertRow();
 
-            novaLinha.insertCell().textContent = tarefa.titulo;
-            novaLinha.insertCell().textContent = tarefa.descricao;
-            novaLinha.insertCell().textContent = tarefa.categoria;
-            novaLinha.insertCell().textContent = tarefa.prioridade;
+            const tituloCell = novaLinha.insertCell();
+            tituloCell.textContent = tarefa.titulo;
+            tituloCell.title = tarefa.titulo;
+
+            const descricaoCell = novaLinha.insertCell();
+            descricaoCell.textContent = tarefa.descricao;
+            descricaoCell.title = tarefa.descricao;
+
+            const categoriaCell = novaLinha.insertCell();
+            categoriaCell.textContent = tarefa.categoria;
+            categoriaCell.title = tarefa.categoria;
+
+            const prioridadeCell = novaLinha.insertCell();
+            prioridadeCell.textContent = tarefa.prioridade;
+            prioridadeCell.title = tarefa.prioridade;
 
             const celulaAcoes = novaLinha.insertCell();
             celulaAcoes.innerHTML = `
