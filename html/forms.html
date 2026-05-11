@@ -3,11 +3,13 @@
         <div id="title-label" class="box-label">
             <label for="task-title">Título</label>
             <input type="text" id="task-title" placeholder="'Arrumar a cozinha'">
+            <span class="input-error" id="title-error"></span>
         </div>
 
         <div id="description-label" class="box-label">
             <label for="task-description">Descrição</label>
             <input type="text" id="task-description" placeholder="'Limpar a pia, chão e balcão'">
+            <span class="input-error" id="description-error"></span>
         </div>
 
         <div id="category-label" class="box-label">
@@ -24,6 +26,7 @@
                 <option value="Projeto">Projeto</option>
                 <option value="Lazer">Lazer</option>
             </select>
+            <span class="input-error" id="category-error"></span>
         </div>
 
         <div id="priority-label" class="box-label">
@@ -41,11 +44,13 @@
                 <input type="radio" id="p-urgent" name="task-priority" value="Urgente">
                 <label for="p-urgent">Urgente</label>
             </div>
+            <span class="input-error" id="priority-error"></span>
         </div>
 
         <button type="submit" id="add-task-btn" class="btn-forms">Adicionar Tarefa</button>
         <button type="submit" id="clean-task-btn" class="btn-forms">Limpar Formulario</button>
     </form>
+    <div id="task-alert" class="custom-alert"></div>
 </div>
 
 <div id="left-selection" class="forms">

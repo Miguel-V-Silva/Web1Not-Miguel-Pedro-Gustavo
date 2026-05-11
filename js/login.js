@@ -3,15 +3,28 @@
     var senha = document.getElementById('input-password').value;
     var lembrar = document.getElementById('remember').checked;
 
-    if (login == "" || senha == "") {
-        alert("O login e senha devem ser preenchidos.");
-        return;
+    const loginErro = document.getElementById('login-error');
+    const senhaErro = document.getElementById('password-error');
+
+    loginErro.textContent = "";
+    senhaErro.textContent = "";
+
+    let valido = true;
+
+    if (login === "") {
+        loginErro.textContent = "Preencha o login";
+        valido = false;
+    } else if (!login.includes("@") || !login.includes(".")) {
+        loginErro.textContent = "Formato: exemplo@email.com";
+        valido = false;
     }
 
-    if (!login.includes("@") || !login.includes(".")) {
-        alert("Login incorreto, deve seguir o modelo: example@example.com");
-        return;
+    if (senha === "") {
+        senhaErro.textContent = "Preencha a senha";
+        valido = false;
     }
+
+    if (!valido) return;
 
     var nome = login.split("@")[0];
     
@@ -31,8 +44,16 @@
         localStorage.setItem("lembrar", "false");
     }
 
-    window.location.href='../html/home.html'
+    window.location.href='../html/home.html';
 }
+
+document.getElementById('input-id').addEventListener('input', function () {
+    document.getElementById('login-error').textContent = "";
+});
+
+document.getElementById('input-password').addEventListener('input', function () {
+    document.getElementById('password-error').textContent = "";
+});
 
     window.onload = function() {
         var lembrar = localStorage.getItem("lembrar");
