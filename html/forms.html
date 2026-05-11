@@ -33,7 +33,6 @@
             </div>
             <span class="input-error" id="category-error"></span>
         </div>
-
         <div id="priority-label" class="box-label radio-group">
             <div class="radio-group-title">Prioridade</div>
             <div class="radio-options">
@@ -56,9 +55,13 @@
             </div>
             <span class="input-error" id="priority-error"></span>
         </div>
-
-        <button type="submit" id="add-task-btn" class="btn-forms">Adicionar Tarefa</button>
-        <button type="submit" id="clean-task-btn" class="btn-forms">Limpar Formulario</button>
+        <div class="form-actions">
+            
+            <button type="reset" id="clean-task-btn" class="btn-icon" aria-label="Limpar formulário" title="Limpar formulário">
+                <img src="../limpar.svg" alt="">
+            </button>
+            <button type="submit" id="add-task-btn" class="btn-contained">Adicionar tarefa</button>
+        </div>
     </form>
     <div id="task-alert" class="custom-alert"></div>
 </div>
