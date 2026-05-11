@@ -51,6 +51,8 @@
 .functions-button-row:focus-visible {
     outline: 2px solid rgba(255, 123, 0, 0.45);
     outline-offset: 2px;
+}
+
 .input-error {
     color: #ef4444;
     font-size: 14px;
@@ -98,7 +100,7 @@
     color: var(--light-text);
 }
 
-input[type="text"], 
+input[type="text"],
 select {
     padding: 12px;
     border: 1px solid var(--border-color);
@@ -114,7 +116,7 @@ select:focus {
     outline: none;
 }
 
-#priority-label > div {
+#priority-label>div {
     display: flex;
     flex-wrap: wrap;
     gap: 15px;
