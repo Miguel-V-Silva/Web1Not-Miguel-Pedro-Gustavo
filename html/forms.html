@@ -1,19 +1,18 @@
 <div id="right-selection" class="forms">
     <form id="task-form">
-        <div id="title-label" class="box-label">
+        <div id="title-label" class="box-label field">
+            <input type="text" name="task-title" id="task-title" required>
             <label for="task-title">Título</label>
-            <input type="text" id="task-title" placeholder="'Arrumar a cozinha'">
         </div>
 
-        <div id="description-label" class="box-label">
+        <div id="description-label" class="box-label field">
+            <input type="text" name="task-description" id="task-description" required>
             <label for="task-description">Descrição</label>
-            <input type="text" id="task-description" placeholder="'Limpar a pia, chão e balcão'">
         </div>
 
-        <div id="category-label" class="box-label">
-            <label for="category">Escolha uma opção:</label>
-            <select id="category" name="category">
-                <option value="" disabled selected>-- Por favor selecione --</option>
+        <div id="category-label" class="box-label field select-field">
+            <select id="category" name="category" required>
+                <option value="" disabled selected></option>
                 <option value="Pessoal">Pessoal</option>
                 <option value="Trabalho">Trabalho</option>
                 <option value="Casa">Casa</option>
@@ -24,22 +23,33 @@
                 <option value="Projeto">Projeto</option>
                 <option value="Lazer">Lazer</option>
             </select>
+            <label for="category">Escolha uma opção:</label>
+            <div class="select-arrow">
+                <svg viewBox="0 0 24 24">
+                    <path d="M6 9l6 6 6-6" />
+                </svg>
+            </div>
         </div>
 
-        <div id="priority-label" class="box-label">
-            <label>Prioridade:</label>
-            <div>
-                <input type="radio" id="p-not-important" name="task-priority" value="Não Importante">
-                <label for="p-not-important">Não Importante</label>
-
-                <input type="radio" id="p-medium" name="task-priority" value="Média">
-                <label for="p-medium">Média</label>
-
-                <input type="radio" id="p-important" name="task-priority" value="Importante">
-                <label for="p-important">Importante</label>
-
-                <input type="radio" id="p-urgent" name="task-priority" value="Urgente">
-                <label for="p-urgent">Urgente</label>
+        <div id="priority-label" class="box-label radio-group">
+            <div class="radio-group-title">Prioridade</div>
+            <div class="radio-options">
+                <div class="radio-item">
+                    <input type="radio" id="p-not-important" name="task-priority">
+                    <label for="p-not-important">Não Importante</label>
+                </div>
+                <div class="radio-item">
+                    <input type="radio" id="p-medium" name="task-priority">
+                    <label for="p-medium">Média</label>
+                </div>
+                <div class="radio-item">
+                    <input type="radio" id="p-important" name="task-priority">
+                    <label for="p-important">Importante</label>
+                </div>
+                <div class="radio-item">
+                    <input type="radio" id="p-urgent" name="task-priority" checked>
+                    <label for="p-urgent">Urgente</label>
+                </div>
             </div>
         </div>
 
