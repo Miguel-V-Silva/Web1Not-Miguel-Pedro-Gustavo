@@ -46,6 +46,9 @@ function iniciarJS() {
         } else if (sessao === 'table') {
             tableSection.style.display = 'block';
         }
+
+        navAdicionar.classList.toggle('active', sessao === 'forms');
+        navListar.classList.toggle('active', sessao === 'table');
     }
 
     //Sessões nav, quando clicadas serão executadas as suas determinadas funções
@@ -95,7 +98,7 @@ function iniciarJS() {
             };
 
             linhaEditada = null;//Tranforma em null novamente para que não fique "em modo edição"
-            adicionarTarefaBotao.textContent = 'Adicionar Tarefa';//Coloca o texto do botão para o padrão(Adicionar Tarefa)
+            adicionarTarefaBotao.textContent = 'Adicionar tarefa';//Coloca o texto do botão para o padrão(Adicionar tarefa)
 
         } else {//Se não acrescenta na lista uma nova tarefa
             tarefas.push({
@@ -179,8 +182,11 @@ function iniciarJS() {
 
             const celulaAcoes = novaLinha.insertCell();
             celulaAcoes.innerHTML = `
+            <button class="delete-task-btn functions-button-row" aria-label="Excluir tarefa" title="Excluir tarefa">
+                <img src="../excluir.svg" alt="">
+            </button>
             <button class="edit-task-btn functions-button-row">Editar</button>
-            <button class="delete-task-btn functions-button-row">Excluir</button>
+            
         `;
 
             celulaAcoes.querySelector('.edit-task-btn').addEventListener('click', () => editarTarefa(index));
@@ -203,7 +209,7 @@ function iniciarJS() {
         if (linhaEditada) {
             linhaEditada.classList.remove('editing');
             linhaEditada = null;
-            adicionarTarefaBotao.textContent = 'Adicionar Tarefa';
+            adicionarTarefaBotao.textContent = 'Adicionar tarefa';
             limparFormulario();
         }
         mostrarSessao('forms');

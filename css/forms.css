@@ -30,6 +30,27 @@
     gap: 20px;
 }
 
+#task-form button,
+#button-form button,
+.functions-button-row {
+    min-height: 40px;
+    padding: 0 16px;
+    border-radius: 20px;
+    border: 1px solid transparent;
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 0;
+    cursor: pointer;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.1s ease, border-color 0.2s ease;
+}
+
+#task-form button:focus-visible,
+#button-form button:focus-visible,
+.functions-button-row:focus-visible {
+    outline: 2px solid rgba(255, 123, 0, 0.45);
+    outline-offset: 2px;
+}
+
 .box-label {
     display: flex;
     flex-direction: column;
@@ -65,19 +86,75 @@ select:focus {
     align-items: center;
 }
 
-.btn-forms {
-    background-color: var(--primary-orange);
-    color: var(--white);
-    border: none;
-    padding: 12px 25px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1.1em;
-    font-weight: 700;
-    margin-top: 10px;
-    transition: background-color 0.3s ease;
+.form-actions {
+    display: flex;
+    gap: 16px;
+    margin-top: 16px;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
 }
 
-.btn-forms:hover {
+.btn-contained {
+    min-width: 160px;
+    height: 48px;
+    min-height: 48px;
+    padding: 0 24px;
+    border-radius: 24px;
+    background-color: var(--primary-orange);
+    color: var(--white);
+    box-shadow: 0 1px 2px rgba(51, 51, 51, 0.22), 0 1px 3px rgba(255, 123, 0, 0.24);
+}
+
+.btn-contained:hover {
     background-color: var(--dark-orange);
+    box-shadow: 0 2px 4px rgba(51, 51, 51, 0.22), 0 3px 8px rgba(255, 123, 0, 0.3);
+}
+
+.btn-contained:active {
+    transform: translateY(1px);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.18);
+}
+
+.btn-icon {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    min-height: 48px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: var(--light-orange);
+    color: var(--dark-orange);
+    line-height: 1;
+    box-shadow: 0 1px 3px rgba(51, 51, 51, 0.12);
+}
+
+.btn-icon img {
+    width: 30px;
+    height: 30px;
+    display: block;
+}
+
+.btn-icon:hover {
+    background-color: #ffdcb8;
+    box-shadow: 0 3px 7px rgba(51, 51, 51, 0.16);
+}
+
+.btn-icon:active {
+    background-color: #ffd0a3;
+    transform: translateY(1px);
+}
+
+@media (max-width: 480px) {
+    .form-actions {
+        align-items: stretch;
+    }
+
+    .btn-contained {
+        flex: 1;
+        min-width: 0;
+    }
 }

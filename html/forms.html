@@ -34,7 +34,7 @@
 
                 <input type="radio" id="p-medium" name="task-priority" value="Média">
                 <label for="p-medium">Média</label>
-
+git
                 <input type="radio" id="p-important" name="task-priority" value="Importante">
                 <label for="p-important">Importante</label>
 
@@ -42,9 +42,13 @@
                 <label for="p-urgent">Urgente</label>
             </div>
         </div>
-
-        <button type="submit" id="add-task-btn" class="btn-forms">Adicionar Tarefa</button>
-        <button type="submit" id="clean-task-btn" class="btn-forms">Limpar Formulario</button>
+        <div class="form-actions">
+            
+            <button type="reset" id="clean-task-btn" class="btn-icon" aria-label="Limpar formulário" title="Limpar formulário">
+                <img src="../limpar.svg" alt="">
+            </button>
+            <button type="submit" id="add-task-btn" class="btn-contained">Adicionar tarefa</button>
+        </div>
     </form>
 </div>
 
