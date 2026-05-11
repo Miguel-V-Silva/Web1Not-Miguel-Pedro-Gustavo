@@ -11,6 +11,37 @@ function iniciarJS() {
     const categoriaSelecionada = document.getElementById('category');//Input de categoria da tarefa
     const prioridadeRadios = document.querySelectorAll('input[name="task-priority"]');//Input de prioridade da tarefa
     
+    //Constantes dos erros
+    const tituloErro = document.getElementById('title-error');
+    const descricaoErro = document.getElementById('description-error');
+    const categoriaErro = document.getElementById('category-error');
+    const prioridadeErro = document.getElementById('priority-error');
+    const taskAlert = document.getElementById('task-alert');
+
+    tituloTarefaInput.addEventListener('input', () => {
+        if (tituloTarefaInput.value.trim()) {
+            tituloErro.textContent = '';
+        }
+    });
+
+    descricaoTarefaInput.addEventListener('input', () => {
+        if (descricaoTarefaInput.value.trim()) {
+            descricaoErro.textContent = '';
+        }
+    });
+
+    categoriaSelecionada.addEventListener('change', () => {
+        if (categoriaSelecionada.value) {
+            categoriaErro.textContent = '';
+        }
+    });
+
+    prioridadeRadios.forEach(radio => {
+        radio.addEventListener('change', () => {
+            prioridadeErro.textContent = '';
+        });
+    });
+    
     //Tabela de tarefas
     const tarefasTable = document.querySelector('#tasks-table tbody');
 
@@ -78,9 +109,35 @@ function iniciarJS() {
         }
 
         //Verifica se quando o botão foi clicado todos os inputs contem algum conteudo(não estão vazies)
-        if (!tituloTarefa || !descricaoTarefa || !categoriaTarefa || !prioridade) {
-            alert("Preencha todos os valores para adicionar a tarefa")
-            return
+        tituloErro.textContent = '';
+        descricaoErro.textContent = '';
+        categoriaErro.textContent = '';
+        prioridadeErro.textContent = '';
+
+        let formularioValido = true;
+
+        if (!tituloTarefa) {
+            tituloErro.textContent = 'Preencha o título da tarefa';
+            formularioValido = false;
+        }
+
+        if (!descricaoTarefa) {
+            descricaoErro.textContent = 'Preencha a descrição da tarefa';
+            formularioValido = false;
+        }
+
+        if (!categoriaTarefa) {
+            categoriaErro.textContent = 'Selecione uma categoria';
+            formularioValido = false;
+        }
+
+        if (!prioridade) {
+            prioridadeErro.textContent = 'Selecione uma prioridade';
+            formularioValido = false;
+        }
+
+        if (!formularioValido) {
+            return;
         }
 
         const tarefas = getTarefas();
@@ -113,11 +170,12 @@ function iniciarJS() {
         renderizarTabela();
         
         //Limpa o formulário após adicionar/editar
-        alert('Tarefa Adicionada!')
+        mostrarAlerta('Tarefa adicionada com sucesso!');
         limparFormulario();
-        
-        //Volta para a table para mostrar o resultado
-        mostrarSessao('table')
+
+        setTimeout(() => {
+            mostrarSessao('table');
+        }, 1500);
     });
 
     //Botão de limpar formulario quando clicado irá executar isso
@@ -129,6 +187,14 @@ function iniciarJS() {
         limparFormulario();
     });
 
+    function mostrarAlerta(mensagem) {
+        taskAlert.textContent = mensagem;
+        taskAlert.classList.add('show');
+
+        setTimeout(() => {
+            taskAlert.classList.remove('show');
+        }, 3000);
+    }
 
     //Função de editar uma linha
     //Recebe o indice da linha que será mudada
@@ -172,10 +238,21 @@ function iniciarJS() {
         tarefas.forEach((tarefa, index) => {
             const novaLinha = tarefasTable.insertRow();
 
-            novaLinha.insertCell().textContent = tarefa.titulo;
-            novaLinha.insertCell().textContent = tarefa.descricao;
-            novaLinha.insertCell().textContent = tarefa.categoria;
-            novaLinha.insertCell().textContent = tarefa.prioridade;
+            const tituloCell = novaLinha.insertCell();
+            tituloCell.textContent = tarefa.titulo;
+            tituloCell.title = tarefa.titulo;
+
+            const descricaoCell = novaLinha.insertCell();
+            descricaoCell.textContent = tarefa.descricao;
+            descricaoCell.title = tarefa.descricao;
+
+            const categoriaCell = novaLinha.insertCell();
+            categoriaCell.textContent = tarefa.categoria;
+            categoriaCell.title = tarefa.categoria;
+
+            const prioridadeCell = novaLinha.insertCell();
+            prioridadeCell.textContent = tarefa.prioridade;
+            prioridadeCell.title = tarefa.prioridade;
 
             const celulaAcoes = novaLinha.insertCell();
             celulaAcoes.innerHTML = `
@@ -216,16 +293,20 @@ function iniciarJS() {
 
 //Carrega o nome de usuario da local storage para ser colocado no topo da página
 function carregarUsuario() {
-    var usuario = JSON.parse(localStorage.getItem("usuario"));
+    var usuario = sessionStorage.getItem("usuario");
     const nomeEl = document.getElementById("nome-usuario");
     if (usuario) {
         if (nomeEl) {
-            nomeEl.innerText = usuario.nome;
+            nomeEl.innerText = usuario;
         }
     } else {
         nomeEl.innerText = "Visitante";
     }
 }
+
+window.addEventListener("beforeunload", function () {
+    sessionStorage.removeItem("usuario")
+});
 
 fetch('../html/forms.html')
     .then(response => response.text())

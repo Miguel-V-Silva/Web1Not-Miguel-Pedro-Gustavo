@@ -3,11 +3,13 @@
         <div id="title-label" class="box-label field">
             <input type="text" name="task-title" id="task-title" required>
             <label for="task-title">Título</label>
+            <span class="input-error" id="title-error"></span>
         </div>
 
         <div id="description-label" class="box-label field">
             <input type="text" name="task-description" id="task-description" required>
             <label for="task-description">Descrição</label>
+            <span class="input-error" id="description-error"></span>
         </div>
 
         <div id="category-label" class="box-label field select-field">
@@ -29,6 +31,7 @@
                     <path d="M6 9l6 6 6-6" />
                 </svg>
             </div>
+            <span class="input-error" id="category-error"></span>
         </div>
 
         <div id="priority-label" class="box-label radio-group">
@@ -51,11 +54,13 @@
                     <label for="p-urgent">Urgente</label>
                 </div>
             </div>
+            <span class="input-error" id="priority-error"></span>
         </div>
 
         <button type="submit" id="add-task-btn" class="btn-forms">Adicionar Tarefa</button>
         <button type="submit" id="clean-task-btn" class="btn-forms">Limpar Formulario</button>
     </form>
+    <div id="task-alert" class="custom-alert"></div>
 </div>
 
 <div id="left-selection" class="forms">

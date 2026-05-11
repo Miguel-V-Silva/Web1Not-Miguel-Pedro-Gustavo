@@ -32,6 +32,40 @@
     gap: 20px;
 }
 
+.input-error {
+    color: #ef4444;
+    font-size: 14px;
+    margin-top: 6px;
+    display: block;
+}
+
+.custom-alert {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #22c55e;
+    color: white;
+    padding: 14px 20px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+
+    transition: all 0.3s ease;
+
+    z-index: 9999;
+}
+
+.custom-alert.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
 .box-label {
     display: flex;
     flex-direction: column;
