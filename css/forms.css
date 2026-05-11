@@ -4,11 +4,13 @@
     display: flex;
     flex-wrap: wrap;
     gap: 30px;
+    align-items: stretch;
 }
 
 #right-selection {
     flex: 2;
     min-width: 300px;
+    display: flex;
 }
 
 #left-selection {
@@ -30,6 +32,7 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+    flex: 1;
 }
 
 #task-form button,
@@ -127,7 +130,8 @@ select:focus {
 .form-actions {
     display: flex;
     gap: 16px;
-    margin-top: 16px;
+    margin-top: auto;
+    padding-top: 24px;
     justify-content: flex-end;
     align-items: center;
     width: 100%;

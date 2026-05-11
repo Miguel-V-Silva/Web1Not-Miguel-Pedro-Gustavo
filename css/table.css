@@ -104,7 +104,7 @@
 }
 
 .edit-task-btn:hover {
-    background-color: #ffdcb8;
+    background-color: var(--dark-orange);
 }
 .delete-task-btn {
     width: 40px;
@@ -121,7 +121,7 @@
 }
 
 .edit-task-btn {
-    background-color: var(--light-orange);
-    color: var(--dark-orange);
+    background-color: var(--medium-orange);
+    color: var(--white);
 }
 
