@@ -88,12 +88,23 @@ main{
 .input-error {
     color: #ef4444;
     font-size: 14px;
-    margin-top: 6px;
+
+    position: absolute;
+    left: 0;
+    top: 100%;
+    margin-top: 4px;
+
     display: block;
 }
 
 .input-form{
     margin-bottom: 15px;
+}
+
+.input-form,
+.box-label {
+    position: relative;
+    margin-bottom: 28px;
 }
 
 .input-form input{
