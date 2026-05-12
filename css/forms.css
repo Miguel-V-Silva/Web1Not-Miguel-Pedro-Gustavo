@@ -31,7 +31,6 @@
 #task-form {
     display: flex;
     flex-direction: column;
-    gap: 20px;
     flex: 1;
 }
 
@@ -59,7 +58,12 @@
 .input-error {
     color: #ef4444;
     font-size: 14px;
-    margin-top: 6px;
+
+    position: absolute;
+    left: 0;
+    top: 100%;
+    margin-top: 2px;
+
     display: block;
 }
 
@@ -93,7 +97,8 @@
 .box-label {
     display: flex;
     flex-direction: column;
-    margin: 0;
+    position: relative;
+    margin-bottom: 28px;
     width: 100%;
 }
 
