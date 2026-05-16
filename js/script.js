@@ -18,6 +18,11 @@ function iniciarJS() {
     const prioridadeErro = document.getElementById('priority-error');
     const taskAlert = document.getElementById('task-alert');
 
+    //Constantes do modal de exclusão de tarefas
+    const deleteModal = document.getElementById('delete-modal');
+    const confirmDelete = document.getElementById('confirm-delete');
+    const cancelDelete = document.getElementById('cancel-delete');
+
     tituloTarefaInput.addEventListener('input', () => {
         if (tituloTarefaInput.value.trim()) {
             tituloErro.textContent = '';
@@ -225,12 +230,24 @@ function iniciarJS() {
     //função para deletar tarefa
     //Recebe o indice da linha que será excluida
     function deletarTarefa(index) {
-        if (confirm('Deseja excluir esta tarefa?')) {
-            const tarefas = getTarefas();
+        const tarefas = getTarefas();
+
+        if (!tarefas[index]) return;
+
+        deleteModal.classList.add('show');
+
+        confirmDelete.onclick = () => {
             tarefas.splice(index, 1);
             salvarTarefas(tarefas);
             renderizarTabela();
-        }
+
+            deleteModal.classList.remove('show');
+            mostrarAlerta('Tarefa excluída com sucesso!');
+        };
+
+        cancelDelete.onclick = () => {
+            deleteModal.classList.remove('show');
+        };
     }
 
     //Recria a tabela na sessão de tabela com base no que há na local storage
@@ -267,7 +284,13 @@ function iniciarJS() {
         `;
 
             celulaAcoes.querySelector('.edit-task-btn').addEventListener('click', () => editarTarefa(index));
-            celulaAcoes.querySelector('.delete-task-btn').addEventListener('click', () => deletarTarefa(index));
+            const btnDelete = celulaAcoes.querySelector('.delete-task-btn');
+
+            btnDelete.addEventListener('click', function (event) {
+                event.stopPropagation();
+                event.preventDefault();
+                deletarTarefa(index);
+            });
         });
     }
 

@@ -195,6 +195,95 @@ select:focus {
     transform: translateY(1px);
 }
 
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.25s ease;
+
+    pointer-events: none;
+}
+
+.modal-overlay.show {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
+}
+
+.modal-box {
+    background: white;
+    padding: 28px;
+    border-radius: 10px;
+    min-width: 320px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    text-align: center;
+}
+
+.modal-box p {
+    font-size: 16px;
+    margin-bottom: 24px;
+    font-weight: 600;
+    color: #333;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+}
+
+.modal-btn {
+    border: none;
+    padding: 10px 22px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.cancel-btn {
+    background: #e5e7eb;
+    color: #111;
+}
+
+.cancel-btn:hover {
+    background: #d1d5db;
+}
+
+.confirm-btn {
+    background: #dc2626;
+    color: white;
+}
+
+.confirm-btn:hover {
+    background: #b91c1c;
+}
+
+.delete-task-btn {
+    position: relative;
+    z-index: 20;
+    cursor: pointer;
+}
+
+.delete-task-btn img {
+    pointer-events: none;
+}
+
+#delete-modal {
+    z-index: 999999;
+}
+
+.delete-task-btn img {
+    pointer-events: none;
+    user-select: none;
+}
+
 @media (max-width: 480px) {
     .form-actions {
         align-items: stretch;
