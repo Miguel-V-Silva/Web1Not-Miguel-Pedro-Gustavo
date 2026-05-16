@@ -201,7 +201,7 @@ function iniciarJS() {
 
         setTimeout(() => {
             taskAlert.classList.remove('show');
-        }, 3000);
+        }, 4000);
     }
 
     //Função de editar uma linha
@@ -257,6 +257,10 @@ function iniciarJS() {
 
         tarefas.forEach((tarefa, index) => {
             const novaLinha = tarefasTable.insertRow();
+
+            const checkboxCell = novaLinha.insertCell();
+            checkboxCell.classList.add('checkbox-column');
+            checkboxCell.innerHTML = `<input type="checkbox">`;
 
             const tituloCell = novaLinha.insertCell();
             tituloCell.textContent = tarefa.titulo;

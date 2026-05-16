@@ -69,29 +69,37 @@
 
 .custom-alert {
     position: fixed;
-    top: 20px;
-    right: 20px;
-    background-color: #22c55e;
-    color: white;
-    padding: 14px 20px;
-    border-radius: 6px;
-    font-size: 14px;
-    font-weight: 600;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%) translateY(12px);
+
+    min-width: 280px;
+    max-width: 520px;
+    width: fit-content;
+
+    padding: 14px 22px;
+
+    background: #2f2d35;
+    color: #f8fafc;
+
+    border-radius: 4px;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.4;
+
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
 
     opacity: 0;
     visibility: hidden;
-    transform: translateY(-10px);
 
-    transition: all 0.3s ease;
-
-    z-index: 9999;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    z-index: 99999;
 }
 
 .custom-alert.show {
     opacity: 1;
     visibility: visible;
-    transform: translateY(0);
+    transform: translateX(-50%) translateY(0);
 }
 
 .box-label {
