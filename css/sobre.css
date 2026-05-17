@@ -1,0 +1,116 @@
+/* =========================
+   CARDS SOBRE NÓS
+========================= */
+
+main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.cards {
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+
+    flex-wrap: wrap;
+}
+
+.card {
+    width: 100%;
+    max-width: 420px;
+
+    background: var(--white);
+
+    border: 1px solid var(--border-color);
+
+    border-radius: 24px;
+
+    padding: 28px;
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        background .25s ease;
+
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.card:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 6px 18px rgba(0, 0, 0, 0.08),
+        0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.card-icon {
+    width: 56px;
+    height: 56px;
+
+    border-radius: 16px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: var(--light-orange);
+
+    margin-bottom: 24px;
+
+    font-size: 24px;
+}
+
+.card h2 {
+    font-size: 1.7rem;
+    font-weight: 700;
+
+    color: var(--dark-text);
+
+    margin-bottom: 16px;
+}
+
+.card p {
+    color: var(--light-text);
+
+    line-height: 1.7;
+
+    margin-bottom: 32px;
+}
+
+.card-actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.m3-button {
+    border: none;
+
+    background: var(--primary-orange);
+    color: var(--white);
+
+    padding: 14px 24px;
+
+    border-radius: 999px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background .2s ease,
+        transform .2s ease;
+}
+
+.m3-button:hover {
+    background: var(--dark-orange);
+
+    transform: scale(1.03);
+}
+
+.m3-button:active {
+    transform: scale(0.98);
+}

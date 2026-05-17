@@ -10,7 +10,21 @@ function iniciarJS() {
     const descricaoTarefaInput = document.getElementById('task-description');//Input de descrição da tarefa
     const categoriaSelecionada = document.getElementById('category');//Input de categoria da tarefa
     const prioridadeRadios = document.querySelectorAll('input[name="task-priority"]');//Input de prioridade da tarefa
-    
+
+
+    // Verifica se a página possui o sistema de tarefas
+    const paginaTemFormulario =
+        adicionarTarefaBotao &&
+        limpaFormulario &&
+        tituloTarefaInput &&
+        descricaoTarefaInput &&
+        categoriaSelecionada;
+
+    if (!paginaTemFormulario) {
+        carregarUsuario();
+        return;
+    }
+
     //Constantes dos erros
     const tituloErro = document.getElementById('title-error');
     const descricaoErro = document.getElementById('description-error');
@@ -46,7 +60,7 @@ function iniciarJS() {
             prioridadeErro.textContent = '';
         });
     });
-    
+
     //Tabela de tarefas
     const tarefasTable = document.querySelector('#tasks-table tbody');
 
@@ -54,6 +68,7 @@ function iniciarJS() {
     const navListar = document.getElementById('nav-listar');//Sessão de aparecer a tabela
     const navAdicionar = document.getElementById('nav-adicionar');//Sessão de aparecer o forms
     const navLogin = document.getElementById('nav-login')//Sessão de voltar para o login
+    const navSobre = document.getElementById('nav-sobre')//Sessão de About us do site
 
     //Sessão Main(Principal)
     const formsSection = document.getElementById('forms-section');//Formulario
@@ -91,13 +106,20 @@ function iniciarJS() {
     navListar.addEventListener('click', () => mostrarSessao('table'));//Mostra a sessão de table e some a sessão de forms
     navAdicionar.addEventListener('click', () => mostrarSessao('forms'));//Mostra a sessão de forms e some a sessão de table
     navLogin.addEventListener('click', () => window.location.href = '../html/login.html')//Leva para a página de login
+    navSobre.addEventListener('click', () => window.location.href = '../html/sobre.html')//Leva para a página de login
 
     //Por padrão ativa somente o forms como visivel
-    mostrarSessao('forms');
+    const params = new URLSearchParams(window.location.search);
+    const section = params.get('section');
+    if (section === 'table') {
+        mostrarSessao('table');
+    } else {
+        mostrarSessao('forms');
+    }
 
     //Função adição de tarefas que é executada ao clicar o botão de adicionar tarefa
     adicionarTarefaBotao.addEventListener('click', function (event) {
-        
+
         //Evita que a página recarregue quando o botão é clicado
         event.preventDefault();
 
@@ -173,10 +195,10 @@ function iniciarJS() {
 
         //Salva as alterações
         salvarTarefas(tarefas);
-        
+
         //Recarrega a tarefa
         renderizarTabela();
-        
+
         //Limpa o formulário após adicionar/editar
         mostrarAlerta('Tarefa adicionada com sucesso!');
         limparFormulario();
@@ -190,7 +212,7 @@ function iniciarJS() {
     limpaFormulario.addEventListener('click', function (event) {
         //Evita que a página recarregue quando o botão é clicado
         event.preventDefault();
-        
+
         //Limpa o formulario
         limparFormulario();
     });
@@ -222,11 +244,11 @@ function iniciarJS() {
 
         //Muda o texto do botão para o usuário entender que está em modo de alteração
         adicionarTarefaBotao.textContent = 'Salvar Alterações';
-        
+
         //Volta a mostrar a sessão d formulario
         mostrarSessao('forms');
     }
-    
+
     //função para deletar tarefa
     //Recebe o indice da linha que será excluida
     function deletarTarefa(index) {
@@ -337,40 +359,30 @@ function carregarUsuario() {
     }
 }
 
-window.addEventListener("beforeunload", function () {
-    sessionStorage.removeItem("usuario")
-});
 
 fetch('../html/forms.html')
     .then(response => response.text())
     .then(data => {
-        document.getElementById('forms-section').innerHTML = data;
 
-        fetch('../html/table.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('table-section').innerHTML = data;
+        const formsSection = document.getElementById('forms-section');
 
-                fetch('../html/header.html')
-                    .then(response => response.text())
-                    .then(data => {
-                        document.querySelector('header').innerHTML = data;
+        if (formsSection) {
+            formsSection.innerHTML = data;
+        }
 
-                        // Fetch do Footer adicionado aqui
-                        fetch('../html/footer.html')
-                            .then(response => response.text())
-                            .then(data => {
-                                document.querySelector('footer').innerHTML = data;
-
-                                // Inicia o JS apenas quando tudo (forms, table, header e footer) estiver carregado
-                                iniciarJS();
-                            })
-                            .catch(error => console.error('Erro ao carregar footer:', error));
-
-                    })
-                    .catch(error => console.error('Erro ao carregar header:', error));
-            })
-            .catch(error => console.error('Erro ao carregar table:', error));
+        return fetch('../html/table.html');
     })
-    .catch(error => console.error('Erro ao carregar forms:', error));
+    .then(response => response.text())
+    .then(data => {
 
+        const tableSection = document.getElementById('table-section');
+
+        if (tableSection) {
+            tableSection.innerHTML = data;
+        }
+
+        iniciarJS();
+    })
+    .catch(error => {
+        console.error('Erro ao carregar conteúdo:', error);
+    });
